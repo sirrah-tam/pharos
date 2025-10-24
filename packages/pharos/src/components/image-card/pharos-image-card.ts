@@ -78,6 +78,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   public link = '';
 
   /**
+   * @deprecated
    * Indicates the label to apply to the image link.
    * @attr image-link-label
    */
@@ -226,13 +227,50 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
   private _renderCollectionImageLinkContent(): TemplateResult {
     return this.error
       ? html`
-          <div
-            class=${classMap({
-              [`card__link--collection--error`]: true,
-            })}
-          >
-            <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
-            <span class="unavailable-text">Image preview not available</span>
+          <div class="card__image--collection-container">
+            <div class="card__image--collection--error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="73"
+                height="65"
+                viewBox="0 0 73 65"
+                fill="none"
+              >
+                <title>Image preview not available</title>
+                <rect
+                  y="24.882"
+                  width="42"
+                  height="42"
+                  transform="rotate(-19.9519 0 24.882)"
+                  fill="#D1CFC7"
+                />
+                <rect
+                  x="30.5576"
+                  y="4"
+                  width="39.6944"
+                  height="40.8625"
+                  transform="rotate(20.871 30.5576 4)"
+                  fill="white"
+                />
+                <rect
+                  x="29"
+                  width="46.235"
+                  height="45.5793"
+                  transform="rotate(20.871 29 0)"
+                  fill="white"
+                />
+                <path
+                  d="M50.9424 44.2752L46.6176 25.4893L39.0461 30.6573L37.9063 27.3458L26.0366 34.7459L50.9424 44.2752Z"
+                  fill="#D1CFC7"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M69.8494 17.2469L30 2L14.7531 41.8494L54.6025 57.0963L69.8494 17.2469ZM21.6401 38.7741L33.0753 8.88704L62.9624 20.3222L51.5272 50.2093L21.6401 38.7741Z"
+                  fill="#D1CFC7"
+                />
+              </svg>
+            </div>
           </div>
         `
       : html`
@@ -243,25 +281,20 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
 
   private _renderCollectionImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
+      class="card__image-container"
       @keydown=${this._handleForwardNavigation}
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
-          [`card__link--collection`]: true,
-          [`card__link--selected`]: this._isSelected,
+          [`card__image--collection`]: true,
+          [`card__image--selected`]: this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        flex
-        no-hover
       >
         ${this._renderCollectionImageLinkContent()}
-      </pharos-link>
+      </div>
       ${this._renderCheckbox()}
     </div>`;
   }
@@ -275,8 +308,47 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
             [`card__container--selectable-hover`]: this._isSelectableCardHover(),
           })}
         >
-          <pharos-icon name="exclamation-inverse" a11y-hidden="true"></pharos-icon>
-          <span class="unavailable-text">Image preview not available</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="73"
+            height="65"
+            viewBox="0 0 73 65"
+            fill="none"
+          >
+            <title>Image preview not available</title>
+            <rect
+              y="24.882"
+              width="42"
+              height="42"
+              transform="rotate(-19.9519 0 24.882)"
+              fill="#D1CFC7"
+            />
+            <rect
+              x="30.5576"
+              y="4"
+              width="39.6944"
+              height="40.8625"
+              transform="rotate(20.871 30.5576 4)"
+              fill="white"
+            />
+            <rect
+              x="29"
+              width="46.235"
+              height="45.5793"
+              transform="rotate(20.871 29 0)"
+              fill="white"
+            />
+            <path
+              d="M50.9424 44.2752L46.6176 25.4893L39.0461 30.6573L37.9063 27.3458L26.0366 34.7459L50.9424 44.2752Z"
+              fill="#D1CFC7"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M69.8494 17.2469L30 2L14.7531 41.8494L54.6025 57.0963L69.8494 17.2469ZM21.6401 38.7741L33.0753 8.88704L62.9624 20.3222L51.5272 50.2093L21.6401 38.7741Z"
+              fill="#D1CFC7"
+            />
+          </svg>
         </div>`
       : html`<slot name="image"></slot>`;
   }
@@ -287,38 +359,34 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           ${this._renderCheckbox()}
           <strong class="card__title--hover">${this.title}</strong>
           <slot name="metadata"></slot>
+          <slot name="overlay"></slot>
         </div>`
       : nothing;
   }
 
   private _renderBaseImage(): TemplateResult {
     return html`<div
-      class="card__link-container"
-      @keydown=${this._handleForwardNavigation}
+      class="card__image-container"
       @mouseenter=${this._handleImageMouseEnter}
       @mouseleave=${this._handleImageMouseLeave}
       @click=${this._cardToggleSelect}
     >
-      <pharos-link
+      <div
         class=${classMap({
-          [`card__link--image`]: true,
-          [`card__link--selectable`]:
+          [`card__image`]: true,
+          [`card__image--selectable`]:
             (this._isSubtleSelectHover() ||
               this._isSelectableViaCard() ||
               this._isDisabledSelectable()) &&
             !this._isSelected,
-          [`card__link--selected`]: this._isSelected,
-          [`card__link--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
+          [`card__image--selected`]: this._isSelected,
+          [`card__image--select-hover`]: this._isSelectableCardHover() && !this._isSelected,
         })}
-        href="${this.link}"
-        a11y-label=${ifDefined(this.imageLinkLabel)}
-        subtle
-        no-hover
       >
         ${this._renderLinkContent()}${this._renderHoverMetadata()}
-        <slot name="overlay"></slot>
-      </pharos-link>
+      </div>
       ${this._showSubtleOverlay() ? nothing : this._renderCheckbox()}
+      ${this._showSubtleOverlay() ? nothing : html`<slot name="overlay"></slot>`}
     </div>`;
   }
 
@@ -339,25 +407,44 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     }[this.variant] as HeadingPreset;
   }
 
-  private _renderTitle(): TemplateResult {
-    return html`<pharos-link
-      @keydown=${this._handleBackwardNavigation}
-      class="card__link--title"
-      href="${this.link}"
-      subtle
-      flex
-      ?indicate-visited="${this.indicateLinkVisited}"
-      @click=${this._cardToggleSelect}
-      >${this.title
-        ? html`<pharos-heading
-            class="card__heading"
-            preset="${this._chooseHeadingPreset()}"
-            level="${this.headingLevel || DEFAULT_HEADING_LEVEL}"
-            no-margin
-            >${this.title}</pharos-heading
-          >`
-        : html`<slot name="title"></slot>`}
-    </pharos-link>`;
+  private _hasTitle(): boolean {
+    const hasAttributeTitle = this.title && this.title.trim() !== '';
+
+    // Check if there are elements in the light DOM with slot="title"
+    const titleSlotElements = this.querySelectorAll('[slot="title"]');
+    const hasSlotContent =
+      titleSlotElements.length > 0 &&
+      Array.from(titleSlotElements).some((el) => {
+        if (el.nodeType === Node.TEXT_NODE) {
+          return el.textContent?.trim() !== '';
+        }
+        return true; // Element nodes count as content
+      });
+
+    return hasAttributeTitle || hasSlotContent;
+  }
+
+  private _renderTitle(): TemplateResult | typeof nothing {
+    return this._hasTitle()
+      ? html`<pharos-link
+          class="card__link--title"
+          href=${this.link}
+          subtle
+          flex
+          ?indicate-visited=${this.indicateLinkVisited}
+          @click=${this._cardToggleSelect}
+          a11y-label=${ifDefined(this.imageLinkLabel)}
+          >${this.title && this.title.trim() !== ''
+            ? html`<pharos-heading
+                class="card__heading"
+                preset=${this._chooseHeadingPreset()}
+                level=${this.headingLevel || DEFAULT_HEADING_LEVEL}
+                no-margin
+                >${this.title}</pharos-heading
+              >`
+            : html`<slot name="title"></slot>`}
+        </pharos-link>`
+      : nothing;
   }
 
   private _renderActionButton(): TemplateResult {
@@ -391,7 +478,7 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return html`<div class="card">
       ${this._renderImage()} ${this._renderSourceType()}
       <div
-        class="card__title"
+        class="${this._hasTitle() ? 'card__title' : ''}"
         @mouseenter=${this._handleMouseEnterSelectable}
         @mouseleave=${this._handleMouseLeaveSelectable}
       >
@@ -401,36 +488,21 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     </div>`;
   }
 
-  private _handleNavigation(event: KeyboardEvent, directionMatches: boolean): void {
-    if (!this.subtleSelect || this._isCheckboxDisplayed()) {
+  private _cardToggleSelect(event: Event): void {
+    if (this.disabled) {
       return;
     }
 
-    if (event.key == 'Tab' && directionMatches) {
-      event.preventDefault();
-      this._isSelectableHovered = true;
-      new Promise((resolve) => requestAnimationFrame(resolve)).then(() => {
-        this._checkbox.focus();
-      });
-    }
-  }
+    const isCardClick = this._isSelectableViaCard() && event.target !== this._checkbox;
+    const isCheckboxClick = event.currentTarget === this._checkbox;
+    const isCheckboxChecked = this._checkbox?.checked ?? false;
+    const isTitleClick = event.currentTarget === this._title;
 
-  private _handleBackwardNavigation(event: KeyboardEvent): void {
-    this._handleNavigation(event, event.shiftKey);
-  }
-
-  private _handleForwardNavigation(event: KeyboardEvent): void {
-    this._handleNavigation(event, !event.shiftKey);
-  }
-
-  private _cardToggleSelect(event: Event): void {
-    const cardClicked = this._isSelectableViaCard() && event.target !== this._checkbox;
-    const checkboxClicked = event.currentTarget === this._checkbox;
-
-    if (!this.disabled && (cardClicked || checkboxClicked)) {
-      // this is required to prevent navigation on the link click
+    if (isCardClick || isCheckboxClick || isCheckboxChecked) {
+      // Prevent navigation on link click
       event.preventDefault();
       event.stopPropagation();
+
       this._isSelected = !this._isSelected;
 
       this.dispatchEvent(
@@ -443,6 +515,8 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
           },
         })
       );
+    } else if (!isTitleClick) {
+      document.location.href = this.link;
     }
   }
 
@@ -473,26 +547,35 @@ export class PharosImageCard extends ScopedRegistryMixin(FocusMixin(PharosElemen
     return this.disabled && this._isSelectable();
   }
 
-  private _isCheckboxDisplayed() {
-    return (
+  private _renderCheckbox(): TemplateResult | typeof nothing {
+    // Always render for selectable variants
+    if (!this._isSelectable()) {
+      return nothing;
+    }
+
+    const isCheckboxFocused = this._checkbox && this.shadowRoot?.activeElement === this._checkbox;
+
+    const showCheckbox =
       this._isSubtleSelectHover() ||
       this._isSelectableViaCard() ||
       this._isSelected ||
-      (this.disabled && this._isSelectable())
-    );
-  }
+      this._isDisabledSelectable() ||
+      isCheckboxFocused;
 
-  private _renderCheckbox(): TemplateResult | typeof nothing {
-    return this._isCheckboxDisplayed()
-      ? html`<pharos-checkbox
-          class="${this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox'}"
-          hide-label="true"
-          ?checked=${this._isSelected}
-          ?disabled=${this.disabled}
-          name="Select ${this.title}"
-          @click="${this._cardToggleSelect}"
-          ><span slot="label">Select ${this.title}</span></pharos-checkbox
-        >`
-      : nothing;
+    const checkboxClass = this._showSubtleOverlay() ? 'card__checkbox--subtle' : 'card__checkbox';
+    return html`<pharos-checkbox
+      class=${classMap({
+        [checkboxClass]: true,
+        'card__checkbox--hidden': !showCheckbox,
+      })}
+      hide-label="true"
+      .checked=${this._isSelected}
+      .disabled=${this.disabled}
+      name="Select ${this.title}"
+      @focus=${() => this.requestUpdate()}
+      @blur=${() => this.requestUpdate()}
+      @click=${this._cardToggleSelect}
+      ><span slot="label">Select ${this.title}</span></pharos-checkbox
+    >`;
   }
 }

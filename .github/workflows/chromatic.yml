@@ -10,21 +10,35 @@ on:
       - '.github/workflows/chromatic.yml'
     branches-ignore:
       - main
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to run Chromatic on'
+        required: true
+        type: string
 
 jobs:
   chromatic:
     name: Chromatic
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo (Push)
+        if: github.event_name == 'push'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js 20.x
+      - name: Checkout Repo (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refs/pull/${{ github.event.inputs.pr_number }}/merge
+
+      - name: Setup Node.js 22.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 22.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache directory path
@@ -51,7 +65,7 @@ jobs:
         run: yarn storybook:wc:build
 
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@v13
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

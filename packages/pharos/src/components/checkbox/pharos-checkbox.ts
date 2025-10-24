@@ -55,12 +55,14 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   @query('#checkbox-element')
   private _checkbox!: HTMLInputElement;
 
+  private _defaultChecked = false;
+
   public static override get styles(): CSSResultArray {
     return [super.styles, checkboxStyles];
   }
 
   protected override firstUpdated(): void {
-    this._checkbox.defaultChecked = this.checked;
+    this._defaultChecked = this.checked;
   }
 
   public onChange(): void {
@@ -103,7 +105,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
   }
 
   _handleFormReset(): void {
-    this.checked = this._checkbox.defaultChecked;
+    this.checked = this._defaultChecked;
   }
 
   private _handleClick(event: Event): void {
@@ -136,13 +138,13 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         name=${this.name}
         type="checkbox"
         .value=${this.value}
-        .checked=${this.checked}
         .indeterminate=${this.indeterminate}
-        ?required="${this.required}"
+        ?checked=${this.checked}
+        ?required=${this.required}
         ?disabled=${this.disabled}
-        aria-required="${this.required}"
-        aria-invalid="${this.invalidated}"
-        aria-describedby="${ifDefined(this.messageId)}"
+        aria-required=${this.required}
+        aria-invalid=${this.invalidated}
+        aria-describedby=${ifDefined(this.messageId)}
         @change=${this.onChange}
       />
       <div class="input-wrapper">
@@ -156,7 +158,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
           role="img"
           aria-hidden="true"
           focusable="false"
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
           @mousedown=${this._handleMousedown}
         >
           <rect x="3" y="3" width="18" height="18" rx="3" class="focus" />
@@ -175,7 +177,7 @@ export class PharosCheckbox extends FormMixin(FormElement) {
         </svg>
         <label
           for="checkbox-element"
-          @click="${this._handleClick}"
+          @click=${this._handleClick}
           @mousedown=${this._handleMousedown}
         >
           <slot name="label"></slot>

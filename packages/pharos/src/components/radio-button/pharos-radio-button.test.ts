@@ -35,9 +35,20 @@ describe('pharos-radio-button', () => {
     await expect(component).to.be.accessible();
   });
 
+  it('has association with validation message', async () => {
+    component = await fixture(html`
+      <test-pharos-radio-button message="this is a test"
+        ><span slot="label">test radio</span></test-pharos-radio-button
+      >
+    `);
+    await expect(
+      component.renderRoot.querySelector('input')?.getAttribute('aria-describedby')
+    ).to.equal('message');
+  });
+
   it('has an attribute to set check value', async () => {
     component = await fixture(html`
-      <test-pharos-radio-button ?checked=${true}
+      <test-pharos-radio-button checked
         ><span slot="label">test radio</span></test-pharos-radio-button
       >
     `);

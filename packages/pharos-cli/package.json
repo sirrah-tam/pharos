@@ -3,25 +3,25 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "5.5.1",
+  "version": "5.6.0",
   "description": "Pharos Web Component Generator",
   "preferGlobal": true,
   "dependencies": {
     "colors": "^1.4.0",
-    "commander": "^12.0.0",
-    "fs-extra": "^11.2.0"
+    "commander": "^14.0.1",
+    "fs-extra": "^11.3.2"
   },
   "bin": {
     "pharos": "dist/index.js"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.26",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
-    "ts-morph": "^22.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.7.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.4",
+    "ts-morph": "^27.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "test": "jest",

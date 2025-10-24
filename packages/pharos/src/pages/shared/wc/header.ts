@@ -1,9 +1,9 @@
 import { html } from 'lit';
 import type { TemplateResult } from 'lit';
-import logo from '@config/assets/images/jstor-logo.svg';
+import logo from '../../../utils/_storybook/assets/images/jstor-logo.svg';
 
 const accountNav = (section: string) => html`
-  <storybook-pharos-dropdown-menu-nav label="profile">
+  <storybook-pharos-dropdown-menu-nav a11y-label="profile">
     <storybook-pharos-dropdown-menu-nav-category
       id="profile-link-${section}"
       data-dropdown-menu-id="profile-menu-${section}"
@@ -86,7 +86,10 @@ export const Header = (): TemplateResult => html`
     </div>
     <div slot="end-top">${accountNav('end')}</div>
     <div slot="end-bottom" style="display: flex;">
-      <storybook-pharos-dropdown-menu-nav label="main navigation" style="display: inline-block">
+      <storybook-pharos-dropdown-menu-nav
+        a11y-label="main navigation"
+        style="display: inline-block"
+      >
         <storybook-pharos-dropdown-menu-nav-link
           href="/action/showAdvancedSearch"
           id="adv-search-menu-link"

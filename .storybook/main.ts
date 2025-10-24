@@ -1,15 +1,15 @@
 import { mergeConfig } from 'vite';
-import path from 'path';
+import react from '@vitejs/plugin-react';
+
+import path, { dirname, join } from 'path';
 
 const config = {
   stories: [],
-  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', '@storybook/addon-links'],
-  features: {
-    storyStoreV7: true,
-  },
-  docs: {
-    autodocs: true,
-  },
+  addons: [
+    { name: '@storybook/addon-a11y' },
+    { name: '@storybook/addon-docs' },
+    { name: '@storybook/addon-links' },
+  ],
   async babel(config, { configType }) {
     config = {
       ...config,
@@ -54,12 +54,12 @@ const config = {
           '@config': path.resolve(__dirname, './'),
         },
       },
+      plugins: [react()],
       optimizeDeps: {
+        exclude: ['fsevents'],
         include: [
-          '@storybook/addon-viewport',
-          '@storybook/blocks',
-          '@storybook/theming/create',
           '@storybook/web-components',
+          '@vitejs/plugin-react',
           'lit/directives/style-map.js',
           'uuid',
         ],
@@ -68,3 +68,7 @@ const config = {
   },
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}

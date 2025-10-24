@@ -11,7 +11,9 @@ module.exports = {
     'selector-id-pattern': null,
     'keyframes-name-pattern': null,
     'scss/operator-no-newline-after': null,
-    'value-no-vendor-prefix': [true, { ignoreValues: 'box' }],
+    'value-no-vendor-prefix': [true, { ignoreValues: ['box'] }],
     'alpha-value-notation': 'number',
+    'scss/at-import-partial-extension': null,
+    'scss/load-partial-extension': 'never',
   },
 };

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 
-import Layout from '../components/layout';
 import handleLinkClick from '../utils/handleLinkClick';
 import {
   hero,
@@ -44,20 +43,6 @@ const IndexPage: FC = () => {
             <i>supportive, </i> and <i>beautiful</i> experiences for the{' '}
             <i>intellectually curious</i>.
           </h1>
-          <PharosHeading level="2" preset="1--bold" className={heading__status}>
-            Get a detailed breakdown of components and the status of their implementation
-          </PharosHeading>
-          <PharosLink
-            className={link__status}
-            href="/components/component-status"
-            isOnBackground
-            flex
-            data-sc="link:component status hero"
-            onClick={handleLinkClick}
-          >
-            Check out the component status page
-            <PharosIcon name="arrow-right" className={icon__arrow} a11yHidden="true"></PharosIcon>
-          </PharosLink>
         </PharosLayout>
 
         <div className={card__image}>
@@ -92,14 +77,8 @@ const IndexPage: FC = () => {
             Utilize our collection of reusable components, styles and their guidelines to build your
             products and sites.
           </p>
-          <PharosButton
-            className={button__card}
-            variant="secondary"
-            href="/components/component-status"
-            data-sc="link:component status"
-            onClick={handleLinkClick}
-          >
-            See component status page
+          <PharosButton className={button__card} variant="secondary" href="/storybook/">
+            View components
           </PharosButton>
         </div>
         <div className={card__image}>
@@ -260,7 +239,7 @@ const IndexPage: FC = () => {
     setDisplay(content);
   }, [Pharos]);
 
-  return <Layout fill>{Display}</Layout>;
+  return Display;
 };
 
 export default IndexPage;

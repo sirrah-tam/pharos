@@ -67,7 +67,47 @@ describe('pharos-sheet', () => {
     expect(component.open).to.be.false;
   });
 
-  it('returns focus back to the trigger element when close', async () => {
+  it('closes when the overlay is clicked without triggering propagation', async () => {
+    component.open = true;
+    await component.updateComplete;
+
+    const mockHandler = sinon.spy();
+    document.addEventListener('click', mockHandler);
+
+    const overlay = component.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
+    overlay?.click();
+
+    await component.updateComplete;
+
+    expect(component.open).to.be.false;
+    expect(mockHandler.called).to.be.false;
+  });
+
+  it('applies an opaque overlay when opened', async () => {
+    const sheet = await fixture<PharosSheet>(getSimpleSheet());
+    sheet.open = true;
+    await sheet.updateComplete;
+
+    const overlay = sheet.shadowRoot?.querySelector('.sheet__overlay') as HTMLElement;
+    const styles = getComputedStyle(overlay);
+
+    expect(styles.backgroundColor).to.equal('rgba(0, 0, 0, 0.5)');
+    expect(styles.pointerEvents).to.equal('auto');
+  });
+
+  it('omits the box shadow when omit-overlay is set and sheet is closed', async () => {
+    const sheet = await fixture<PharosSheet>(
+      html`<test-pharos-sheet omit-overlay>
+        <div>I am sheet contents</div>
+      </test-pharos-sheet>`
+    );
+    await sheet.updateComplete;
+
+    const content = sheet.shadowRoot?.querySelector('.sheet__content') as HTMLElement;
+    expect(getComputedStyle(content).boxShadow).to.equal('none');
+  });
+
+  it('focus moves to the sheet after opening and returns back to the trigger element when closed', async () => {
     let activeElement = null;
     const onFocusIn = (event: Event): void => {
       activeElement = event.composedPath()[0];
@@ -80,9 +120,12 @@ describe('pharos-sheet', () => {
     document.body.appendChild(trigger);
 
     const button = document.querySelector('#trigger') as HTMLButtonElement;
-    button.click();
     button.focus();
+    button.click();
     await component.updateComplete;
+
+    const sheetHandle = component.shadowRoot?.querySelector('.sheet__handle') as HTMLDivElement;
+    expect(activeElement === sheetHandle).to.be.true;
 
     component.open = false;
     await component.updateComplete;

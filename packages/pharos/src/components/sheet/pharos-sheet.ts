@@ -1,10 +1,10 @@
 import { PharosElement } from '../base/pharos-element';
 import { html, nothing } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { query, property, state } from 'lit/decorators.js';
 import type { TemplateResult, CSSResultArray, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { sheetStyles } from './pharos-sheet.css';
-import focusable from '../../utils/focusable';
 
 import ScopedRegistryMixin from '../../utils/mixins/scoped-registry';
 import { PharosButton } from '../button/pharos-button';
@@ -13,6 +13,7 @@ import { FocusTrap } from '@ithaka/focus-trap';
 
 const CLOSE_BUTTONS = `[data-sheet-close],[data-pharos-component="PharosButton"]#close-button`;
 const FOCUS_ELEMENT = `[data-sheet-focus]`;
+const FOCUS_HANDLE = `[data-sheet-handle]`;
 
 /**
  * Pharos sheet component.
@@ -24,6 +25,8 @@ const FOCUS_ELEMENT = `[data-sheet-focus]`;
  *
  * @fires pharos-sheet-open - Fires when the sheet is about to open - cancelable
  * @fires pharos-sheet-opened - Fires when the sheet has opened
+ * @fires pharos-sheet-expanded - Fires when the sheet has expanded
+ * @fires pharos-sheet-collapsed - Fires when the sheet has collapsed
  * @fires pharos-sheet-close - Fires when the sheet is about to close - cancelable
  * @fires pharos-sheet-closed - Fires when the sheet has closed
  *
@@ -73,26 +76,58 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   @property({ type: String, reflect: true })
   public header = 'Sheet header';
 
+  /**
+   * Indicates the minimum height for the sheet in pixels
+   * @attr minHeight
+   */
+  @property({ type: String, attribute: 'min-height', reflect: true })
+  public minHeight = 0;
+
+  /**
+   * Indicates if the sheet omits the overlay
+   * @attr omitOverlay
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'omit-overlay' })
+  public omitOverlay = false;
+
+  /**
+   * Indicates if the sheet should dock rather than close
+   * @attr docked
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'docked' })
+  public docked = false;
+
   private _currentTrigger: Element | null = null;
 
   private _triggers!: NodeListOf<HTMLElement>;
 
   @state()
-  private _startHeight = 0;
+  private _minHeight = 0 || this.minHeight;
   private _startY = 0;
   private _newHeight = 0;
   private _isDragging = false;
+
+  @query('.sheet__content')
+  private _sheetContent!: HTMLDivElement;
+
+  @query('.sheet__overlay')
+  private _sheetOverlay!: HTMLDivElement;
+
+  @query('.sheet__dialog--no-overlay')
+  private _sheetDialogNoOverlay!: HTMLDivElement;
+
+  @query('.sheet__dialog')
+  private _sheetDialog!: HTMLDivElement;
 
   constructor() {
     super();
     this._handleKeydown = this._handleKeydown.bind(this);
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
-    if (this.enableExpansion) {
-      this.addEventListener('touchend', this._handleDragEnd);
-      this.addEventListener('mouseup', this._handleDragEnd);
-      this.addEventListener('touchmove', this._handleTouchDragging);
-      this.addEventListener('mousemove', this._handleMouseDragging);
-    }
+    this._handleMouseDragging = this._handleMouseDragging.bind(this);
+    this._handleTouchDragging = this._handleTouchDragging.bind(this);
+    this._handleDragEnd = this._handleDragEnd.bind(this);
+    this._handleMouseDragStart = this._handleMouseDragStart.bind(this);
+    this._handleTouchDragStart = this._handleTouchDragStart.bind(this);
   }
 
   public static override get styles(): CSSResultArray {
@@ -110,10 +145,16 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   protected override updated(changedProperties: PropertyValues): void {
     if (changedProperties.has('open')) {
       if (this.open) {
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.expanded
-          ? this.MAX_EXPAND_PERCENTAGE
-          : this.MIN_EXPAND_PERCENTAGE;
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
+
+        if (this.omitOverlay) {
+          this._sheetDialogNoOverlay.style.height = this.expanded
+            ? this._getMaxHeightStr()
+            : this._getMinHeightStr();
+        }
+
         this._focusContents();
       } else {
         this._returnTriggerFocus();
@@ -124,9 +165,15 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       }
     }
     if (changedProperties.has('expanded')) {
-      if (this.expanded) {
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+      this._sheetContent.style.height = this.expanded
+        ? this._getMaxHeightStr()
+        : this._getMinHeightStr();
+
+      if (!this.omitOverlay) {
+        this._sheetDialog.style.height = '100%';
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
       }
     }
   }
@@ -155,6 +202,14 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     });
   }
 
+  private _getMinHeightStr(): string {
+    return this.minHeight ? `${this.minHeight}px` : this.MIN_EXPAND_PERCENTAGE;
+  }
+
+  private _getMaxHeightStr(): string {
+    return this.MAX_EXPAND_PERCENTAGE;
+  }
+
   private _closeSheet(trigger: EventTarget | null): void {
     if (this.open) {
       const details = {
@@ -178,22 +233,26 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   }
 
   private _openSheet(trigger: EventTarget | null): void {
+    const details = {
+      bubbles: true,
+      composed: true,
+      detail: trigger,
+    };
     if (!this.open) {
-      const details = {
-        bubbles: true,
-        composed: true,
-        detail: trigger,
-      };
-
       if (
         this.dispatchEvent(new CustomEvent('pharos-sheet-open', { ...details, cancelable: true }))
       ) {
         this.open = true;
-        const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-        sheetContent.style.height = this.expanded
-          ? this.MAX_EXPAND_PERCENTAGE
-          : this.MIN_EXPAND_PERCENTAGE;
+        this._sheetContent.style.height = this.expanded
+          ? this._getMaxHeightStr()
+          : this._getMinHeightStr();
       }
+    } else if (this.docked) {
+      this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+      this.dispatchEvent(
+        new CustomEvent('pharos-sheet-expanded', { ...details, cancelable: true })
+      );
+      this.expanded = true;
     }
   }
 
@@ -204,31 +263,51 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
     }
   }
 
-  private _handleOverlayClickOnTouch(event: TouchEvent): void {
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    const overlayContent = this.shadowRoot?.querySelector(`.sheet__overlay`) as HTMLDivElement;
-    if (overlayContent.clientHeight - event.touches?.[0].clientY > sheetContent.clientHeight) {
-      this._closeSheet(event.target);
+  private _handleOverlayInteraction(event: MouseEvent | TouchEvent): void {
+    if (this.omitOverlay) {
+      return;
+    }
+    const interactionY = event instanceof MouseEvent ? event.clientY : event.touches?.[0].clientY;
+    if (this._sheetOverlay.clientHeight - interactionY > this._sheetContent.clientHeight) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (this.docked) {
+        const details = {
+          bubbles: true,
+          composed: true,
+        };
+        this._sheetContent.style.height = this._getMinHeightStr();
+        this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
+        this.expanded = false;
+      } else {
+        this._closeSheet(event.target);
+      }
     }
   }
 
   private _handleDialogClick(event: MouseEvent): void {
-    if ((event.target as Element).matches(CLOSE_BUTTONS)) {
+    if ((event.target as Element).matches(CLOSE_BUTTONS) && !this.docked) {
       this._closeSheet(event.target);
+    } else if (this.docked) {
+      this._sheetContent.style.height = this.expanded
+        ? this._getMaxHeightStr()
+        : this._getMinHeightStr();
     }
   }
 
   private _handleMouseDragStart(event: MouseEvent): void {
     if (!this.enableExpansion) return;
+
     if (this._isDragging) {
       this._handleDragEnd();
       return;
     }
     this._isDragging = true;
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    this._startHeight = sheetContent.clientHeight;
+    this._minHeight = this._sheetContent.clientHeight;
     this._startY = event.pageY;
-    this._newHeight = this._startHeight;
+    this._newHeight = this._minHeight;
+    document.addEventListener('mousemove', this._handleMouseDragging);
+    document.addEventListener('mouseup', this._handleDragEnd);
   }
 
   private _handleTouchDragStart(event: TouchEvent): void {
@@ -238,61 +317,65 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       return;
     }
     this._isDragging = true;
-    const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-    this._startHeight = sheetContent.clientHeight;
+    this._minHeight = this._sheetContent.clientHeight;
     this._startY = event.touches?.[0].pageY;
-    this._newHeight = this._startHeight;
+    this._newHeight = this._minHeight;
+    document.addEventListener('touchmove', this._handleTouchDragging, { passive: false } as any);
+    document.addEventListener('touchend', this._handleDragEnd);
   }
 
   private _handleMouseDragging(event: MouseEvent): void {
     if (this._isDragging) {
       const delta = this._startY - event.pageY;
-      const newHeight = this._startHeight + delta;
+      const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
-      if (sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE && event.pageY < this._startY) {
+      if (this.docked && newHeight <= this._minHeight) {
+        return;
+      }
+      if (
+        this._sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        event.pageY < this._startY
+      ) {
         this._isDragging = false;
         return;
       }
-      sheetContent.style.height = `${newHeight}px`;
+      this._sheetContent.style.height = `${newHeight}px`;
     }
   }
 
   private _handleTouchDragging(event: TouchEvent): void {
     if (this._isDragging) {
       const delta = this._startY - event.touches?.[0].pageY;
-      const newHeight = this._startHeight + delta;
+      const newHeight = this._minHeight + delta;
       this._newHeight = newHeight;
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       if (
-        sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
+        this._sheetContent.style.height === this.MAX_EXPAND_PERCENTAGE &&
         event.touches?.[0].pageY < this._startY
       ) {
         this._isDragging = false;
         return;
       }
-      sheetContent.style.height = `${newHeight}px`;
+      this._sheetContent.style.height = `${newHeight}px`;
     }
   }
 
   private _handleDragEnd(): void {
     if (this._isDragging) {
-      const sheetContent = this.shadowRoot?.querySelector(`.sheet__content`) as HTMLDivElement;
       const details = {
         bubbles: true,
         composed: true,
       };
-      if (this._newHeight === this._startHeight) {
+      if (this._newHeight === this._minHeight) {
         this._isDragging = false;
         return;
       }
-      if (this._newHeight > this._startHeight) {
-        sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
+      if (this._newHeight > this._minHeight) {
+        this._sheetContent.style.height = this.MAX_EXPAND_PERCENTAGE;
         this.dispatchEvent(new CustomEvent('pharos-sheet-expanded', details));
         this.expanded = true;
       } else {
-        if (this.expanded) {
-          sheetContent.style.height = this.MIN_EXPAND_PERCENTAGE;
+        if (this.expanded && this.docked) {
+          this._sheetContent.style.height = this._getMinHeightStr();
           this.dispatchEvent(new CustomEvent('pharos-sheet-collapsed', details));
           this.expanded = false;
         } else {
@@ -311,11 +394,12 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
   private async _focusContents(): Promise<void> {
     this._currentTrigger = this.ownerDocument.activeElement;
     const focusElement = this.querySelector(FOCUS_ELEMENT);
+
     if (focusElement) {
       await 0;
       (focusElement as HTMLElement).focus();
     } else {
-      const tabbable = this.shadowRoot?.querySelector(focusable);
+      const tabbable = this.shadowRoot?.querySelector(FOCUS_HANDLE);
       if (tabbable) {
         await 0;
         (tabbable as HTMLElement).focus();
@@ -336,7 +420,7 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       composed: true,
     };
 
-    if (this.open) {
+    if (this.open && !this.docked) {
       this.dispatchEvent(new CustomEvent('pharos-sheet-opened', details));
     } else {
       this.dispatchEvent(new CustomEvent('pharos-sheet-closed', details));
@@ -372,36 +456,52 @@ export class PharosSheet extends ScopedRegistryMixin(PharosElement) {
       : nothing;
   }
 
-  protected override render(): TemplateResult {
+  protected renderSheet(): TemplateResult {
+    const sheetDialog = this.omitOverlay ? 'sheet__dialog--no-overlay' : 'sheet__dialog';
     return html`
-      <div class="sheet__overlay" @touchstart=${this._handleOverlayClickOnTouch}>
-        <div
-          role="dialog"
-          class="sheet__dialog"
-          aria-modal="true"
-          aria-label=${ifDefined(this.header)}
-          aria-describedby="${ifDefined(this.descriptionId)}"
-          @click=${this._handleDialogClick}
-          @touchstart=${this._handleTouchDragStart}
-          @touchend=${this._handleDragEnd}
-        >
-          <focus-trap>
-            <div class="sheet__content">
-              <div
-                class="sheet__handle_wrapper"
-                @mousedown=${this._handleMouseDragStart}
-                @mouseup=${this._handleDragEnd}
-              >
-                <div class="sheet__handle"></div>
-              </div>
-              ${this._renderCloseButton()}
-              <div class="sheet__body">
-                ${this.descriptionContent}
-                <slot></slot>
-              </div>
+      <div
+        role="dialog"
+        class=${sheetDialog}
+        aria-modal="true"
+        aria-label=${ifDefined(this.header)}
+        aria-describedby=${ifDefined(this.descriptionId)}
+        @click=${this._handleDialogClick}
+        @touchstart=${this._handleTouchDragStart}
+        @touchend=${this._handleDragEnd}
+      >
+        <focus-trap>
+          <div class="sheet__content">
+            <div
+              class="sheet__handle_wrapper"
+              @mousedown=${this._handleMouseDragStart}
+              @mouseup=${this._handleDragEnd}
+            >
+              <div class="sheet__handle" tabindex="-1" data-sheet-handle></div>
             </div>
-          </focus-trap>
-        </div>
+            ${this._renderCloseButton()}
+            <div class="sheet__body">
+              ${this.descriptionContent}
+              <slot></slot>
+            </div>
+          </div>
+        </focus-trap>
+      </div>
+    `;
+  }
+
+  protected override render(): TemplateResult {
+    const overlayClasses = {
+      sheet__overlay: true,
+      'sheet__overlay--omit': this.omitOverlay,
+    };
+
+    return html`
+      <div
+        class=${classMap(overlayClasses)}
+        @touchstart=${this._handleOverlayInteraction}
+        @click=${this._handleOverlayInteraction}
+      >
+        ${this.renderSheet()}
       </div>
     `;
   }

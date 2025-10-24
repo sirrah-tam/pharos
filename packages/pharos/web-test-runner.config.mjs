@@ -1,11 +1,14 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
 
+const silencedLogs = ['Lit is in dev mode.', 'Multiple versions of Lit loaded.'];
+
 export default {
   files: ['lib/**/*.test.js'],
   nodeResolve: true,
   concurrentBrowsers: 3,
   coverage: true,
-  testsStartTimeout: 30000,
+  browserStartTimeout: 60000,
+  testsStartTimeout: 45000,
   coverageConfig: {
     threshold: {
       statements: 98,
@@ -28,6 +31,14 @@ export default {
           </body>
       </html>
   `,
+  filterBrowserLogs(log) {
+    for (const arg of log.args) {
+      if (typeof arg === 'string' && silencedLogs.some((l) => arg.includes(l))) {
+        return false;
+      }
+    }
+    return true;
+  },
   browsers: [
     playwrightLauncher({
       product: 'chromium',

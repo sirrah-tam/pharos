@@ -1,5 +1,264 @@
 # @ithaka/pharos
 
+## 14.21.0
+
+### Minor Changes
+
+- [#1066](https://github.com/ithaka/pharos/pull/1066) [`d6b5718`](https://github.com/ithaka/pharos/commit/d6b5718b6c097b909e09afe6ca9bf056c0beb69f) Thanks [@brentswisher](https://github.com/brentswisher)! - Add new Pill component for displaying discrete selections
+
+### Patch Changes
+
+- [#1087](https://github.com/ithaka/pharos/pull/1087) [`6c7e181`](https://github.com/ithaka/pharos/commit/6c7e1817b8bcac9967a41879797d262f8b5e8329) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Bug fix to pharos sheet. Docked sheet should never close.
+
+## 14.20.0
+
+### Minor Changes
+
+- [#1051](https://github.com/ithaka/pharos/pull/1051) [`446435a`](https://github.com/ithaka/pharos/commit/446435aa853a8a0ae76f2bb9c13f9492729e3b78) Thanks [@vedanthkallakuri](https://github.com/vedanthkallakuri)! - Sheet now supports being `docked` or to `omitOverlay`
+
+## 14.19.0
+
+### Minor Changes
+
+- [#1069](https://github.com/ithaka/pharos/pull/1069) [`88dc682`](https://github.com/ithaka/pharos/commit/88dc682f5b3d195aa62c5cb54b88fde80d0205ff) Thanks [@afiasco](https://github.com/afiasco)! - Image-card subtle-select does not navigate when the checkbox is checked
+
+## 14.18.1
+
+### Patch Changes
+
+- [#1063](https://github.com/ithaka/pharos/pull/1063) [`545753c`](https://github.com/ithaka/pharos/commit/545753c6a869f657f552982a153ff3a1d78a2d46) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Adding the SVG for the error state of the base image card
+
+## 14.18.0
+
+### Minor Changes
+
+- [#1057](https://github.com/ithaka/pharos/pull/1057) [`a54ee5f`](https://github.com/ithaka/pharos/commit/a54ee5fe39ebda7d84eea2b5b0995335f29d913a) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Removing yOffset in dropdown menu component
+
+### Patch Changes
+
+- [#1061](https://github.com/ithaka/pharos/pull/1061) [`ed67865`](https://github.com/ithaka/pharos/commit/ed678659bc9606ee66615f4983e7982139108253) Thanks [@afiasco](https://github.com/afiasco)! - Replace exclamation icon on image card error state with a new svg, removed associated error state text
+
+## 14.17.0
+
+### Minor Changes
+
+- [#1043](https://github.com/ithaka/pharos/pull/1043) [`a84e29f`](https://github.com/ithaka/pharos/commit/a84e29fb0e5404f6a7d1409819ec3547fcaf9792) Thanks [@daneah](https://github.com/daneah)! - Add Bluesky and Threads icons
+
+- [#1041](https://github.com/ithaka/pharos/pull/1041) [`7034e05`](https://github.com/ithaka/pharos/commit/7034e058f913f25dc305846deaccbc2524db6241) Thanks [@afiasco](https://github.com/afiasco)! - Add a fallback option for focus management on the Sheet component
+
+## 14.16.2
+
+### Patch Changes
+
+- [#1030](https://github.com/ithaka/pharos/pull/1030) [`0a389e9`](https://github.com/ithaka/pharos/commit/0a389e9284e6e09599b793c390074022b01133b0) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - Moves propagation change into overlay code
+
+## 14.16.1
+
+### Patch Changes
+
+- [#1021](https://github.com/ithaka/pharos/pull/1021) [`a5bc6e8`](https://github.com/ithaka/pharos/commit/a5bc6e88192de979a34bc367551c9911b85c1236) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix multiselect dropdown token names to match component name
+  Add fallback values for new tokens
+
+- [#1017](https://github.com/ithaka/pharos/pull/1017) [`5637fc5`](https://github.com/ithaka/pharos/commit/5637fc5463d9872ab4bf7bbcc820619b5cf6ae71) Thanks [@brentswisher](https://github.com/brentswisher)! - Remove console log from multiselect-dropdown on click handler
+
+## 14.16.0
+
+### Minor Changes
+
+- [#1007](https://github.com/ithaka/pharos/pull/1007) [`2c3db1e`](https://github.com/ithaka/pharos/commit/2c3db1e847c45e27f2eb0393ab6eb68047869b4e) Thanks [@JimFeather](https://github.com/JimFeather)! - Redesigned the modal component on mobile screen widths to enable scrolling.
+
+### Patch Changes
+
+- [#1008](https://github.com/ithaka/pharos/pull/1008) [`f34e3cb`](https://github.com/ithaka/pharos/commit/f34e3cb51a464c7fb3649748eaccfd8c926aacaa) Thanks [@daneah](https://github.com/daneah)! - Upgrade design tokens to Style Dictionary 5
+
+  This changes how tokens are specified internal to Pharos
+  and is not meant to affect the consumption of tokens in SCSS or JavaScript.
+
+## 14.15.0
+
+### Minor Changes
+
+- [#979](https://github.com/ithaka/pharos/pull/979) [`7fe729c`](https://github.com/ithaka/pharos/commit/7fe729cc25d31936c015be69ea23ed2f2d596f49) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update image card to remove image link, fix accessibility issues with SB examples
+
+- [#1004](https://github.com/ithaka/pharos/pull/1004) [`87e526a`](https://github.com/ithaka/pharos/commit/87e526a1718f701bf0533a4f22e58a151a9a1ebb) Thanks [@phosphotungstic](https://github.com/phosphotungstic)! - fix(sheet): Stop click from propagating through overlay
+
+### Patch Changes
+
+- [#997](https://github.com/ithaka/pharos/pull/997) [`8d08a73`](https://github.com/ithaka/pharos/commit/8d08a73cd5556bc72f1c2a16af05561e24a2afcc) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Updating Storybook stories that had accessibility violations
+
+## 14.14.0
+
+### Minor Changes
+
+- [#987](https://github.com/ithaka/pharos/pull/987) [`9e5d1a8`](https://github.com/ithaka/pharos/commit/9e5d1a85ce012d965ef86f7996f423c34896252a) Thanks [@ymouzakis](https://github.com/ymouzakis)! - add select text icon
+
+- [#962](https://github.com/ithaka/pharos/pull/962) [`e6ac3ed`](https://github.com/ithaka/pharos/commit/e6ac3edace8556ce47f6f421c20b5dd51826b579) Thanks [@brentswisher](https://github.com/brentswisher)! - Add multiselect dropdown component
+
+## 14.13.0
+
+### Minor Changes
+
+- [#942](https://github.com/ithaka/pharos/pull/942) [`483b57d`](https://github.com/ithaka/pharos/commit/483b57d7989ffb06b794712ae220262e8699198c) Thanks [@daneah](https://github.com/daneah)! - Sync design kit icons for additions and changes to icon set
+
+- [#953](https://github.com/ithaka/pharos/pull/953) [`7bac23d`](https://github.com/ithaka/pharos/commit/7bac23d6369535916babdc9199be64e459c37f6d) Thanks [@daneah](https://github.com/daneah)! - Sheet can now be closed on mouse devices by clicking outside the sheet content
+
+- [#975](https://github.com/ithaka/pharos/pull/975) [`3bf708d`](https://github.com/ithaka/pharos/commit/3bf708dfa81f13cf335fcc20c1877b786c2034d8) Thanks [@daneah](https://github.com/daneah)! - Add text editing iconography
+
+- [#943](https://github.com/ithaka/pharos/pull/943) [`0f12f28`](https://github.com/ithaka/pharos/commit/0f12f28877c1db987e30271f90b9571f562200e6) Thanks [@daneah](https://github.com/daneah)! - Upgrade to Lit 3 and latest scoped custom elements dependencies
+
+## 14.12.1
+
+### Patch Changes
+
+- [#934](https://github.com/ithaka/pharos/pull/934) [`093f493`](https://github.com/ithaka/pharos/commit/093f4937ea463e9b750e072f3e8cbbd1adcfa81c) Thanks [@brentswisher](https://github.com/brentswisher)! - Revert update to target es2022 when compiling
+
+## 14.12.0
+
+### Minor Changes
+
+- [#927](https://github.com/ithaka/pharos/pull/927) [`b859ce8`](https://github.com/ithaka/pharos/commit/b859ce850e4f0554b8d98e16faf0e26056848440) Thanks [@Zahraa222](https://github.com/Zahraa222)! - feat(icon): Replace cite icon with new SVG
+
+### Patch Changes
+
+- [#925](https://github.com/ithaka/pharos/pull/925) [`464b5ac`](https://github.com/ithaka/pharos/commit/464b5acdd84ccca530c2021c56140aa50bb91afb) Thanks [@daneah](https://github.com/daneah)! - Update build target to es2022
+
+## 14.11.0
+
+### Minor Changes
+
+- [#915](https://github.com/ithaka/pharos/pull/915) [`c280dbb`](https://github.com/ithaka/pharos/commit/c280dbb1e5801cdc8aff579f14ec13bfcaa0968c) Thanks [@adandavati](https://github.com/adandavati)! - - Remove resizeObserver from every table cell, since it was causing performance issues with larger tables.
+  - Update the table to allow passing custom headers while maintaining backwards compatibility for a columns array being passed in.
+
+### Patch Changes
+
+- [#908](https://github.com/ithaka/pharos/pull/908) [`d56d07e`](https://github.com/ithaka/pharos/commit/d56d07ee0e993aa5bc35824dd9d6b086eabf7cf1) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Remove tabindex from alert component
+
+- [#916](https://github.com/ithaka/pharos/pull/916) [`1822ed4`](https://github.com/ithaka/pharos/commit/1822ed42607625850e5088524f1dbfe16576ba61) Thanks [@michael-iden](https://github.com/michael-iden)! - define `checked` to be a boolean attribute on checkboxes
+
+## 14.10.1
+
+### Patch Changes
+
+- [#912](https://github.com/ithaka/pharos/pull/912) [`40d562f`](https://github.com/ithaka/pharos/commit/40d562f917789e3922d1cb528ddf2064cd4bfcd5) Thanks [@daneah](https://github.com/daneah)! - Ensure that parent tabs don't handle nested child tab clicks accidentally
+
+## 14.10.0
+
+### Minor Changes
+
+- [#897](https://github.com/ithaka/pharos/pull/897) [`32cb21c`](https://github.com/ithaka/pharos/commit/32cb21c59c192e6520a3df2f6de0dde7a8699d81) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add indeterminate progress bar variant
+
+## 14.9.0
+
+### Minor Changes
+
+- [#891](https://github.com/ithaka/pharos/pull/891) [`7fe4b18`](https://github.com/ithaka/pharos/commit/7fe4b18f3572764ebb7f114b3f034139854da71e) Thanks [@brentswisher](https://github.com/brentswisher)! - Add ability to disable options in combobox components
+
+- [#886](https://github.com/ithaka/pharos/pull/886) [`ee57108`](https://github.com/ithaka/pharos/commit/ee57108d66dcec613d5a85c775a73a9974688d1e) Thanks [@jialin-he](https://github.com/jialin-he)! - Add star and star filled icons
+
+## 14.8.0
+
+### Minor Changes
+
+- [#871](https://github.com/ithaka/pharos/pull/871) [`1ca7e9b`](https://github.com/ithaka/pharos/commit/1ca7e9ba796862faa5e89b88b91ebaf378fd6e67) Thanks [@brentswisher](https://github.com/brentswisher)! - Add filter, private, restrictive, community, and gen-ai icons
+
+## 14.7.0
+
+### Minor Changes
+
+- [#840](https://github.com/ithaka/pharos/pull/840) [`308b8af`](https://github.com/ithaka/pharos/commit/308b8af940d0c581ce952a74fccfe7c429c492c7) Thanks [@brentswisher](https://github.com/brentswisher)! - Allow complex content in tables through new table body, row, and cell custom elements
+
+## 14.6.0
+
+### Minor Changes
+
+- [#842](https://github.com/ithaka/pharos/pull/842) [`43ea7db`](https://github.com/ithaka/pharos/commit/43ea7db28184f44d3b68a7b6b6ebe51223c34f32) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - add icon filetype html
+
+## 14.5.3
+
+### Patch Changes
+
+- [#846](https://github.com/ithaka/pharos/pull/846) [`49ad5ad`](https://github.com/ithaka/pharos/commit/49ad5ad4200b0c603d1c5c284f4850998e3798f5) Thanks [@jialin-he](https://github.com/jialin-he)! - Use large icon for close button in sidenav
+
+## 14.5.2
+
+### Patch Changes
+
+- [#843](https://github.com/ithaka/pharos/pull/843) [`37c0669`](https://github.com/ithaka/pharos/commit/37c066994f9e230ea35a756f556f42e7391a91d6) Thanks [@jialin-he](https://github.com/jialin-he)! - Add rotation icon
+
+- [#837](https://github.com/ithaka/pharos/pull/837) [`9a5672b`](https://github.com/ithaka/pharos/commit/9a5672bc56a9ac9e1879ec6957e76c04c3a1cb11) Thanks [@brentswisher](https://github.com/brentswisher)! - Update the combobox component to set the accessible title on the button, not the icon itself
+
+- [#844](https://github.com/ithaka/pharos/pull/844) [`ecff778`](https://github.com/ithaka/pharos/commit/ecff778a39e51854061de577ddaae76a584c6f0c) Thanks [@jialin-he](https://github.com/jialin-he)! - Update the close button in sidenav
+
+## 14.5.1
+
+### Patch Changes
+
+- [#827](https://github.com/ithaka/pharos/pull/827) [`91870ce`](https://github.com/ithaka/pharos/commit/91870ce321913fcb288e4fb948416b1a2966c49f) Thanks [@michael-iden](https://github.com/michael-iden)! - Remove unnecessary scrollbars from modal and enable Node 22 support
+
+- [#833](https://github.com/ithaka/pharos/pull/833) [`fa946f2`](https://github.com/ithaka/pharos/commit/fa946f26e9918840eb1eda8fb8ef3b8c1536fffb) Thanks [@mariadevadoss](https://github.com/mariadevadoss)! - Update min height styling of textarea
+
+## 14.5.0
+
+### Minor Changes
+
+- [#813](https://github.com/ithaka/pharos/pull/813) [`6bdaff3`](https://github.com/ithaka/pharos/commit/6bdaff31237685978d34d4c85133e0fb70565031) Thanks [@brentswisher](https://github.com/brentswisher)! - Add sticky header option to table component. Fix bug preventing hideCaption from correctly hiding a table caption.
+
+- [#810](https://github.com/ithaka/pharos/pull/810) [`52f56af`](https://github.com/ithaka/pharos/commit/52f56af6a76e0c34f7a8e79d83aced61fc6e66e4) Thanks [@brentswisher](https://github.com/brentswisher)! - Add component tokens to table and change default header background
+
+- [#825](https://github.com/ithaka/pharos/pull/825) [`fc902f2`](https://github.com/ithaka/pharos/commit/fc902f2511d584fc0126a58302f401be3faef9ad) Thanks [@michael-iden](https://github.com/michael-iden)! - Add switch component
+
+- [#824](https://github.com/ithaka/pharos/pull/824) [`0717dd8`](https://github.com/ithaka/pharos/commit/0717dd891380306b60e8009609d832dfce1aa0f0) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Radio buttons: Add aria-describedby association for validation message
+
+### Patch Changes
+
+- [#801](https://github.com/ithaka/pharos/pull/801) [`8eefe16`](https://github.com/ithaka/pharos/commit/8eefe16c4fcd411c59d7380d9baa130503f6883d) Thanks [@brentswisher](https://github.com/brentswisher)! - Fix error message when no table caption is provided to recommend correct attribute to visually hide it
+
+- [#829](https://github.com/ithaka/pharos/pull/829) [`62a6b66`](https://github.com/ithaka/pharos/commit/62a6b66b46123247554324bd1cb7b5feeb4c2170) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Update the radio button SVG icon to use aria-hidden instead of aria-label
+
+## 14.4.0
+
+### Minor Changes
+
+- [#796](https://github.com/ithaka/pharos/pull/796) [`24c01ac`](https://github.com/ithaka/pharos/commit/24c01ac044ecab771dfea008e034c8443eee6f7d) Thanks [@ichittaro-Ithaka](https://github.com/ichittaro-Ithaka)! - Add upload, save, and pin icons
+
+## 14.3.0
+
+### Minor Changes
+
+- [#768](https://github.com/ithaka/pharos/pull/768) [`73b839d`](https://github.com/ithaka/pharos/commit/73b839dcc7cfe7b28f05236974764a18e99df4d5) Thanks [@satya-achanta-venkata](https://github.com/satya-achanta-venkata)! - Add Feedback Icon
+
+### Patch Changes
+
+- [#770](https://github.com/ithaka/pharos/pull/770) [`38b9506`](https://github.com/ithaka/pharos/commit/38b950608512705b102beb281cd54731afd3101f) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Add export for createFormData
+
+## 14.2.3
+
+### Patch Changes
+
+- [#766](https://github.com/ithaka/pharos/pull/766) [`21ed861`](https://github.com/ithaka/pharos/commit/21ed861368714f9c72bcf52a739e15984bd353b1) Thanks [@ymouzakis](https://github.com/ymouzakis)! - Fix card accessibility when using an overlay slot
+
+## 14.2.2
+
+### Patch Changes
+
+- [#761](https://github.com/ithaka/pharos/pull/761) [`4e8fcde`](https://github.com/ithaka/pharos/commit/4e8fcdef7696d3876f5a2c6c6757e8f7ab209b6f) Thanks [@michael-iden](https://github.com/michael-iden)! - Fix behavior allowing tab panel contents scroll independently of the page by setting a defined height on an element wrapping the tabs
+
+## 14.2.1
+
+### Patch Changes
+
+- [#739](https://github.com/ithaka/pharos/pull/739) [`f026ecb`](https://github.com/ithaka/pharos/commit/f026ecb7889f58b16cdc843abde1edf995c7ed9b) Thanks [@brentswisher](https://github.com/brentswisher)! - Add individual components to export list
+
+## 14.2.0
+
+### Minor Changes
+
+- [#733](https://github.com/ithaka/pharos/pull/733) [`20a8596`](https://github.com/ithaka/pharos/commit/20a85960770cbe29caeecafe984168c9fcb069f3) Thanks [@michael-iden](https://github.com/michael-iden)! - Emit `pharos-coach-mark-closed` event when coach mark is dismissed
+
+### Patch Changes
+
+- [#726](https://github.com/ithaka/pharos/pull/726) [`72e9476`](https://github.com/ithaka/pharos/commit/72e9476692a6bbe0cc0a7ffbdbdd60754666abca) Thanks [@sirrah-tam](https://github.com/sirrah-tam)! - Fix empty table column header cell and add test
+
 ## 14.1.0
 
 ### Minor Changes
@@ -335,7 +594,6 @@
 ### Minor Changes
 
 - [#434](https://github.com/ithaka/pharos/pull/434) [`080c496`](https://github.com/ithaka/pharos/commit/080c496fedd4be13bd7f63c92332b9e1f6e32069) Thanks [@daneah](https://github.com/daneah)! - \* Replace PopperJS with Floating UI for tooltips and dropdown menus
-
   - Update GitHub Actions to use environment files instead of `set-output`
   - Update GitHub Actions action versions
   - Fix stylelint errors for Link, ToggleButton, TextInput
@@ -562,28 +820,25 @@
 ### Minor Changes
 
 - [#268](https://github.com/ithaka/pharos/pull/268) [`ffb2f63`](https://github.com/ithaka/pharos/commit/ffb2f63523bfe51ee2cc16de1740309590cded59) Thanks [@Niznikr](https://github.com/Niznikr)! - Add register utility:
-
   - Update `PharosElement` to set `[data-pharos-component]` with `constructor.name`
   - Update `PharosComponentMixin` to set `[data-pharos-component]` with base class name
   - Add register utility to simplify component registration and ensure trivial classes are used for custom elements:
 
     ```javascript
-    import { PharosAlert, PharosButton, PharosIcon } from "@ithaka/pharos";
-    import registerComponents from "@ithaka/pharos/lib/utils/registerComponents";
+    import { PharosAlert, PharosButton, PharosIcon } from '@ithaka/pharos';
+    import registerComponents from '@ithaka/pharos/lib/utils/registerComponents';
 
-    registerComponents("{prefix}", [PharosAlert, PharosButton, PharosIcon]);
+    registerComponents('{prefix}', [PharosAlert, PharosButton, PharosIcon]);
     ```
 
   - Add a React Pharos context provider for consumers to indicate prefix used for registration:
 
     ```jsx
-    import { PharosContext } from "@ithaka/pharos/lib/utils/PharosContext";
+    import { PharosContext } from '@ithaka/pharos/lib/utils/PharosContext';
 
-    const context = { prefix: "homepage" };
+    const context = { prefix: 'homepage' };
 
-    <PharosContext.Provider value={context}>
-      ...app code
-    </PharosContext.Provider>;
+    <PharosContext.Provider value={context}>...app code</PharosContext.Provider>;
     ```
 
 ### Patch Changes
@@ -605,7 +860,6 @@
 ### Major Changes
 
 - [#226](https://github.com/ithaka/pharos/pull/226) [`7843568`](https://github.com/ithaka/pharos/commit/78435685eb15b1c88122c0c71bbc228272a6651d) Thanks [@Niznikr](https://github.com/Niznikr)! - require manual component registration:
-
   - Remove component self-registration
   - Scope registries for components composed of other Pharos components using [scoped-registry-mixin](https://github.com/lit/lit/tree/main/packages/labs/scoped-registry-mixin)
   - Update React wrapper to detect defined custom tag name
@@ -614,15 +868,14 @@
   - Update documentation
 
   **Migration Guidelines**
-
   1. Remove all individual imports of Pharos web components.
 
   2. Register them with a custom tag in your app's entrypoint in the form of `{app/bundle}-pharos-{component}`:
 
      ```javascript
-     import { PharosAlert } from "@ithaka/pharos/lib/components/alert/pharos-alert";
+     import { PharosAlert } from '@ithaka/pharos/lib/components/alert/pharos-alert';
 
-     customElements.define("homepage-pharos-alert", PharosAlert);
+     customElements.define('homepage-pharos-alert', PharosAlert);
      ```
 
   3. Update templates, queries, unit tests, and integration tests with the newly defined tag names.
@@ -659,19 +912,17 @@
   6. Import the JSDOM patch in your Jest setup file if you use Jest for unit testing:
 
      ```javascript
-     import "@ithaka/pharos/lib/patches/jsdom";
-     import "your-pharos-component-registration-file";
+     import '@ithaka/pharos/lib/patches/jsdom';
+     import 'your-pharos-component-registration-file';
      ```
 
 ### Patch Changes
 
 - [#243](https://github.com/ithaka/pharos/pull/243) [`2bc785d`](https://github.com/ithaka/pharos/commit/2bc785d16f30c954c53fdcfcd39a65600c866476) Thanks [@Niznikr](https://github.com/Niznikr)! - update Stylelint:
-
   - Follow Stylelint [migration guidelines](https://stylelint.io/migration-guide/to-14/)
   - Address errors found
 
 * [#245](https://github.com/ithaka/pharos/pull/245) [`8bb5b8a`](https://github.com/ithaka/pharos/commit/8bb5b8a0f89a8a4ecc34c4c6f342a58cc88d06ef) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Node 16:
-
   - Update GitHub actions to use Node 16
   - Update `.nvmrc`
   - Update React build script
@@ -743,17 +994,14 @@
 ### Minor Changes
 
 - [#194](https://github.com/ithaka/pharos/pull/194) [`efea137`](https://github.com/ithaka/pharos/commit/efea137717110dff3c40df0138589f840588a9a6) Thanks [@Lham42](https://github.com/Lham42)! - Add closability function to alert component:
-
   - add `closable` property to `alert` component
 
 * [#188](https://github.com/ithaka/pharos/pull/188) [`767d6f8`](https://github.com/ithaka/pharos/commit/767d6f8f10267afcb111fa92d9a7b3a71c3fee4e) Thanks [@Niznikr](https://github.com/Niznikr)! - update to TypeScript 4.3:
-
   - Update packages to use TypeScript 4.3
   - Add `noImplicitOverride` flag
   - Update Prettier to support the new `override` keyword
 
 - [#186](https://github.com/ithaka/pharos/pull/186) [`3946ca2`](https://github.com/ithaka/pharos/commit/3946ca26e0d9cc4587d7c6bfd8f6e67efb58d3ea) Thanks [@Niznikr](https://github.com/Niznikr)! - use custom elements manifest v1.0.0:
-
   - Swap `web-component-analyzer` for `@custom-elements-manifest/analyzer`
   - Update Storybook to support the updated format
   - Update React build script
@@ -825,7 +1073,6 @@
 - [#133](https://github.com/ithaka/pharos/pull/133) [`bad3ef6`](https://github.com/ithaka/pharos/commit/bad3ef6118fa5de333399b8f6473f4707ba20103) Thanks [@daneah](https://github.com/daneah)! - Add headingLevel to image card to change the heading level when using the `title` property
 
 * [#137](https://github.com/ithaka/pharos/pull/137) [`b5d84e6`](https://github.com/ithaka/pharos/commit/b5d84e6a074e20b8ba87f8f704a2d0f7c773ae6f) Thanks [@Niznikr](https://github.com/Niznikr)! - use SassDoc to document SASS:
-
   - Add a script that uses SassDoc to generate a json containing all documented SASS
   - Add documentation comments to mixins
   - Update mixin stories
@@ -833,7 +1080,6 @@
 ### Patch Changes
 
 - [#136](https://github.com/ithaka/pharos/pull/136) [`5e00ece`](https://github.com/ithaka/pharos/commit/5e00ece6b9da6b6fc51f81dcf803c11d4e79e5cb) Thanks [@michael-iden](https://github.com/michael-iden)! - image-card style updates
-
   - center images horizontally within image card
   - align card title to top instead of center
   - remove contain styling from the card element
@@ -847,7 +1093,6 @@
 * [#128](https://github.com/ithaka/pharos/pull/128) [`1e1c1fd`](https://github.com/ithaka/pharos/commit/1e1c1fdf368682171f8eba63a0eb55acf741a9f5) Thanks [@michael-iden](https://github.com/michael-iden)! - allow action-button to be a slotted element
 
 - [#122](https://github.com/ithaka/pharos/pull/122) [`60667c5`](https://github.com/ithaka/pharos/commit/60667c558fc476ac4df1c1c7185846e400a686af) Thanks [@Niznikr](https://github.com/Niznikr)! - implement layout component on the site:
-
   - Add preset `1-col--sidenav-comfy` to `<pharos-layout>` for larger margins on our breakpoints
   - Implement layouts with the new preset on the site
   - Update site styles for responsiveness on our breakpoints
@@ -885,18 +1130,15 @@
 - [#83](https://github.com/ithaka/pharos/pull/83) [`c8c299b`](https://github.com/ithaka/pharos/commit/c8c299b0dfd62dab4aeababfa69108b95483a640) Thanks [@daneah](https://github.com/daneah)! - Remove icon height and width as public properties
 
 * [#19](https://github.com/ithaka/pharos/pull/19) [`70f42ef`](https://github.com/ithaka/pharos/commit/70f42ef0776d1b0ff0ea32ae6560deef92757d8d) Thanks [@Niznikr](https://github.com/Niznikr)! - update to Lit 2:
-
   - Update to Lit 2 following upgrade guide
   - Update `@open-wc/testing` tools
   - Target `es2019` as recommended by Lit
   - Run tests on built JS package
 
 - [#50](https://github.com/ithaka/pharos/pull/50) [`81dd35c`](https://github.com/ithaka/pharos/commit/81dd35c4c7b0dad5d995e9472f54c158027d151d) Thanks [@Niznikr](https://github.com/Niznikr)! - fire modal events when opened/closed via props:
-
   - Move `pharos-modal-opened` and `pharos-modal-closed` to updated lifecycle and remove trigger details
 
 * [#42](https://github.com/ithaka/pharos/pull/42) [`84e5bfa`](https://github.com/ithaka/pharos/commit/84e5bfad249b5e5738cf6adf03bc6f25c769628d) Thanks [@Niznikr](https://github.com/Niznikr)! - remove support for IE11:
-
   - Remove polyfills
   - Remove design token imports in components
   - Update documentation
@@ -911,12 +1153,10 @@
 - [#79](https://github.com/ithaka/pharos/pull/79) [`b8d5dfa`](https://github.com/ithaka/pharos/commit/b8d5dfac4f179ad7480488df768e7adb21332035) Thanks [@michael-iden](https://github.com/michael-iden)! - add pdf and ppt icons
 
 * [#89](https://github.com/ithaka/pharos/pull/89) [`d967b52`](https://github.com/ithaka/pharos/commit/d967b520e054c8dd5bfa1dbdc33ec3bd848860cb) Thanks [@Niznikr](https://github.com/Niznikr)! - import icons dynamically:
-
   - Export icon tokens individually as default exports
   - Update `pharos-icon` to dynamically import them
 
 - [#88](https://github.com/ithaka/pharos/pull/88) [`5435a15`](https://github.com/ithaka/pharos/commit/5435a153da40c98f031f57b76de81a820ac35ffe) Thanks [@daneah](https://github.com/daneah)! - Upgrade to Style Dictionary 3.0
-
   - Use the `outputReferences` option to generate tokens by reference instead of by value.
     That is, CSS and SCSS variables can reference other variables in turn, keeping the provenance of each token in the output.
   - Rename the `1x`, `2x`, etc. tokens to `1-x`, `2-x`, etc. to maintain and match their output names.
@@ -928,14 +1168,12 @@
 * [#92](https://github.com/ithaka/pharos/pull/92) [`a95c6fd`](https://github.com/ithaka/pharos/commit/a95c6fd574816d8a6f2c66bd903141135516173f) Thanks [@SMQuazi](https://github.com/SMQuazi)! - add name attributes to states story for combobox, text-input and textarea
 
 - [#95](https://github.com/ithaka/pharos/pull/95) [`7b4cf51`](https://github.com/ithaka/pharos/commit/7b4cf51054cf7647864afe5ce4e53de963660f0d) Thanks [@gbassham](https://github.com/gbassham)! - update image card styles:
-
   - Change height for image in image card component from 250px to 224px
   - Add max-width on "Preview not available" text to guarantee wrapping
 
 * [#85](https://github.com/ithaka/pharos/pull/85) [`faed05f`](https://github.com/ithaka/pharos/commit/faed05f19c9b42c18e9a3f526f007d589fbf601c) Thanks [@Niznikr](https://github.com/Niznikr)! - check if click is canceled for submit buttons
 
 - [#84](https://github.com/ithaka/pharos/pull/84) [`63342ae`](https://github.com/ithaka/pharos/commit/63342ae3967f58c3652f08392b465dcb57162d1b) Thanks [@Lham42](https://github.com/Lham42)! - modify button and input styles in Storybook:
-
   - add `<pharos-button>` to checkbox group, combobox, radio group and select stories
   - modify width for combobox and select in Storybook
 
@@ -946,7 +1184,6 @@
 ### Minor Changes
 
 - [#66](https://github.com/ithaka/pharos/pull/66) [`54e9ce0`](https://github.com/ithaka/pharos/commit/54e9ce06e5033a1ef487e6fdbee4fb8aee25b19b) Thanks [@Lham42](https://github.com/Lham42)! - Add skip to main content functionality for sidenav component:
-
   - Add `skip` prop to `pharos-link` to specify whether the link must be hidden until focused
   - Add `main-content-id` prop to `pharos-sidenav` to render a skip link with target
   - Add skip links to the site sidenav and main element
@@ -954,7 +1191,6 @@
 * [#72](https://github.com/ithaka/pharos/pull/72) [`e5652d6`](https://github.com/ithaka/pharos/commit/e5652d63d0b0941e31f4847812f787d180f94117) Thanks [@Niznikr](https://github.com/Niznikr)! - enable setting elements in a shadow DOM as tooltip boundary
 
 - [#68](https://github.com/ithaka/pharos/pull/68) [`cffffc5`](https://github.com/ithaka/pharos/commit/cffffc51d4592b76b0fd022e9b5070fbb88df5b4) Thanks [@Niznikr](https://github.com/Niznikr)! - update collection cards:
-
   - Update collection card styles
   - Wrap link around collection image
   - Add `no-hover` attribute for links
@@ -976,7 +1212,6 @@
 - [#51](https://github.com/ithaka/pharos/pull/51) [`2656245`](https://github.com/ithaka/pharos/commit/26562459b4911d61bd299e5be191f87ff236d3c1) Thanks [@Niznikr](https://github.com/Niznikr)! - render link for error image cards and allow subtle state
 
 * [#48](https://github.com/ithaka/pharos/pull/48) [`ced1c1f`](https://github.com/ithaka/pharos/commit/ced1c1f082e40b5e0b5c71830fb6c6cde1277b83) Thanks [@Niznikr](https://github.com/Niznikr)! - update dependencies:
-
   - Update Gatsby dependencies
   - Update ESLint dependencies
   - Update Sass
@@ -987,7 +1222,6 @@
 ### Minor Changes
 
 - [#31](https://github.com/ithaka/pharos/pull/31) [`faf789c`](https://github.com/ithaka/pharos/commit/faf789cfa753d355a7171622b4d591df90c4fd88) Thanks [@Niznikr](https://github.com/Niznikr)! - add image card component:
-
   - Add card component with `error` and `subtle` states
   - Add `action-menu` attribute to render an action button to act as the trigger for the menu
   - Add `collection` variant to present collection in 4:3 aspect ratio
@@ -999,7 +1233,6 @@
 ### Patch Changes
 
 - [#33](https://github.com/ithaka/pharos/pull/33) [`46fbc67`](https://github.com/ithaka/pharos/commit/46fbc679c16f094aef2c207e4f4c05e71552a9bb) Thanks [@Niznikr](https://github.com/Niznikr)! - update Storybook to generate React API tables:
-
   - Update Storybook to 6.3 alpha
   - Follow migration guidelines
 
@@ -1012,7 +1245,6 @@
 ### Minor Changes
 
 - [#17](https://github.com/ithaka/pharos/pull/17) [`4dd7f01`](https://github.com/ithaka/pharos/commit/4dd7f010bdad906f0d21dbd35e48378e9bceffd7) Thanks [@Niznikr](https://github.com/Niznikr)! - add layout component:
-
   - Add design tokens for breakpoints and grid gutter
   - Add layout component which applies a 12-column grid for a specified layout
   - Add Sass mixins for establishing grid styles for the breakpoints
@@ -1022,7 +1254,6 @@
 ### Patch Changes
 
 - [#20](https://github.com/ithaka/pharos/pull/20) [`b8581b4`](https://github.com/ithaka/pharos/commit/b8581b4f72309037d0182266571e527a0dec86c5) Thanks [@Niznikr](https://github.com/Niznikr)! - remove component guidelines from Storybook:
-
   - Remove component guidelines from Storybook
   - Add links to the guidelines
   - Use React versions of components in the guidelines to render properly in Gatsby
@@ -1039,7 +1270,6 @@
 ### Major Changes
 
 - [`329505a`](https://github.com/ithaka/pharos/commit/329505af1475004a64b319ca29614d8a0f2177d7) Thanks [@Niznikr](https://github.com/Niznikr)! - rename packages to publish to Ithaka namespace:
-
   - Rename package `@pharos/core` to `@ithaka/pharos`
   - Rename package `@pharos/cli` to `@ithaka/pharos-cli`
   - Rename package `@pharos/site` to `@ithaka/pharos-site`
@@ -1050,7 +1280,6 @@
 ### Patch Changes
 
 - [#9](https://github.com/ithaka/pharos/pull/9) [`bd2588a`](https://github.com/ithaka/pharos/commit/bd2588a3cf1fb77e68e98a5b6b8c5e2d9f14552b) Thanks [@Niznikr](https://github.com/Niznikr)! - update lit for forward-compatible features:
-
   - Update dependencies
   - Change `@internalProperty` to `@state`
 
@@ -1059,14 +1288,12 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Lint mdx and js files:
-
   - Add `eslint-plugin-mdx` for linting mdx files
   - Add `eslint-plugin-no-smart-quotes` to find and replace smart quotes
   - Use eslint overrides to explicitly configure settings for each file type
   - Address linting errors
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update images for open source compliance:
-
   - Replace images on Pharos site and Storybook with compliant ones
   - Update styles to match design
 
@@ -1101,7 +1328,6 @@
 ### Major Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Remove deprecated design tokens:
-
   - Migration guidelines can be found [here](#7200)
 
 ### Minor Changes
@@ -1111,7 +1337,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Move out functional tests and fonts:
-
   - Move functional tests to new repo `pharos-functional-tests` and update test job
   - Remove fonts and pull them in from S3
   - Fix site home page hero font and layout
@@ -1125,13 +1350,11 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example item detail page:
-
   - Create an item detail page inspired by latest designs
   - Update the revised header used in the example pages to allow enabling search for every breakpoint
   - Upgrade `husky` to v6
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add input group documentation:
-
   - Add input group documentation and guidelines
   - Update Gatsby babel config to fix decorator runtime error
   - Remove `margin` and `padding` from `*` selector in site styles to not interfere with slotted component styles
@@ -1139,11 +1362,9 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Remove display property from links for proper wrapping:
-
   - Add `flex` prop to links to enable flexbox when displaying links with an icon
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Fix item detail carousels:
-
   - Update Storybook
   - Fix item detail carousels styles
   - Fix home page input placement
@@ -1157,7 +1378,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add responsive features to sidenav:
-
   - Add `menu` icon to `pharos-icon` set
   - Add `pharos-sidenav-button` that is only visible when viewport goes below breakpoint 1056px
   - Slide out `pharos-sidenav` when viewport goes below breakpoint 1056px or when its close button is clicked
@@ -1166,7 +1386,6 @@
   - Delegate focus correctly when open/close buttons are clicked
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example reports page:
-
   - Create a reports page inspired by latest designs
   - Keep margin at 56px until 320px breakpoint is reached
   - Remove 1440px from list of breakpoints
@@ -1180,7 +1399,6 @@
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Keep border for disabled inputs and textareas
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Bump chromatic delays:
-
   - Up the timeouts and snapshot delays for tooltip and dropdown menu stories for consistent results
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update header columns to extend end column
@@ -1220,7 +1438,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update on changes to children for components without a slot:
-
   - Create a mixin that uses a `MutationObserver` to react to changes in a component's children and then call `requestUpdate` to re-render the component
   - Use `unsafeHTML(child.outerHTML)` for rendering children as otherwise the list of children is lost after first render with `child` alone
   - Update `pharos-breadcrumb` to utilize slots to ensure event listeners can be used on the passed items
@@ -1230,7 +1447,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Upgrade to Gatsby v3:
-
   - Update dependencies and verify `develop` and `build` scripts.
   - Import CSS modules as ES modules
   - Preload fonts for Pharos site
@@ -1241,7 +1457,6 @@
   - Adds pharos-breadcrumb-item component which controls the styling and logic for the individual items in the breadcrumb
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook example home page:
-
   - Create a home page inspired by latest designs
   - Create a revised header to use in the story
   - Change `contain` value for `pharos-heading` to address cutoff for large headings with prop `no-margin`
@@ -1274,7 +1489,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add toast component:
-
   - Add `pharos-toaster` which manages `pharos-toast` generation, focusing, and positioning
   - Add `pharos-toast` which uses a cancelable debouncer to manage closing after 6 seconds
   - Open toasts when `pharos-toaster` is present and custom event `pharos-toast-open` is fired on the document
@@ -1290,7 +1504,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Conform design tokens:
-
   - Create new tokens without the word `brand` from color, line height, and spacing tokens
   - Update all styles to use the new tokens
   - Mark `base` and `brand` color, line height, and spacing tokens as deprecated
@@ -1298,7 +1511,6 @@
   - Ensure token related pages in Storybook and the Pharos site display updated names
 
   **Migration Guidelines**
-
   1. Remove `brand` from `pharos-color`, `pharos-line-height`, and `pharos-spacing` tokens:
 
      | Old Token                      | New Token                |
@@ -1330,7 +1542,6 @@
 - Thanks [@eslawski](https://github.com/eslawski)! - Enhance pharos-button to have a condensed icon only form
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add sidenav component:
-
   - Create `SideElement` base class for `pharos-sidenav` and upcoming `pharos-sidebar` components to inherit styles from
   - Add `top` slot to `pharos-sidenav` for content shown above the main body
   - Construct default slot to house `pharos-sidenav-section`, `pharos-sidenav-menu`, and `pharos-sidenav-link` elements
@@ -1360,7 +1571,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create Storybook search page to test interoperability between atoms and molecules:
-
   - Create a search page inspired by latest designs
   - Add stories to `Pages` category to fit atomic design model
   - Use `stories.ts` and `stories.tsx` format to emulate developer experience
@@ -1411,7 +1621,6 @@
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add chromatic viewports to applicable stories to test for regressions
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update documentation:
-
   - Add docs on Node/Typescript requirements
   - Add docs on importing design tokens and typography styles
   - Add docs on importing Sass mixins and needed Webpack config
@@ -1433,7 +1642,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update header and dropdown menu components to support a section for the PDS on JSTOR:
-
   - Add slot `top` to `pharos-header` for a top section on the header
   - Create base class `OverlayElement` for tooltips and dropdown menus to extend from
   - Update `pharos-dropdown-menus` to support menus with no items
@@ -1443,7 +1651,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Center modals without CSS transform to fix Popper placements:
-
   - Center modals with flexbox and remove problematic styles
   - Verify in Chrome, Firefox, Safari, and IE11
 
@@ -1466,7 +1673,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add header component:
-
   - Add slots for sections of the header: `start`, `center`, `end`
   - Fix bugs in `pharos-dropdown-menu-nav` pertaining to opening/closing its menus
   - Verify in IE11
@@ -1491,7 +1697,6 @@
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Show Pharos version in Storybook
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add footer component:
-
   - Add slots for various parts of the footer (many of which expect a list of links to display)
   - Implement layout and responsive design using CSS grid
   - Verify in IE11
@@ -1568,7 +1773,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add input group component:
-
   - Add `pharos-input-group` component which extends the `pharos-text-input` component
   - Add default slot to support appended elements such as icons, buttons, and selects
   - Add `prepend` slot to support prepended elements
@@ -1576,7 +1780,6 @@
   - Add `pharos-input-group-select` variant component
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Upgrade to React 17:
-
   - Update dependencies
   - Follow guide to configure Storybook and Gatsby to use new JSX transform
   - Verify Storybook and Gatsby develop/build commands
@@ -1605,7 +1808,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Fix submit and reset buttons within forms:
-
   - For buttons with type `submit` and `reset` in a form, on click attach a button element of the same type and click it for the desired effect on the form, and then detach it
   - Prevent the click on the helper button to propagate
   - Add method `_handleFormReset` to the form mixin and implement the reset logic for each form element
@@ -1622,7 +1824,6 @@
 ### Patch Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Support ref on React components:
-
   - Use `forwardRef` and `useImperativeHandle` to support ref on our React components
   - Ensure passing `tabIndex` is applied correctly
 
@@ -1641,7 +1842,6 @@
 ### Minor Changes
 
 - Thanks [@michael-iden](https://github.com/michael-iden)! - Add `pharos-tabs` component:
-
   - Add tabs component to take in the clickable tab elements and tab panels
   - Add functionality to change the visible panel when the tab is clicked
   - Ensure proper accessibility for tabs, and the panel it controls
@@ -1657,7 +1857,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add additional icons:
-
   - Add `attachment` and `copy` icons
 
 ## 7.1.0
@@ -1665,7 +1864,6 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add additional icons:
-
   - Add `book`, `collapse`, `expand`, `google-color`, and `question-inverse` icons
 
 ### Patch Changes
@@ -1679,7 +1877,6 @@
 ### Major Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add `pharos-button` component:
-
   - Create button with `primary`, `secondary`, and `subtle` variants
   - Add `large`, `on-background`, `icon`, `icon-right`, and `icon-left` properties to further customize buttons
   - Remove `variant` property from links and instead allow buttons to be rendered as links with the `href` prop to allow for all design variations
@@ -1689,7 +1886,6 @@
   - Update `combobox` and `modal` components to use `button` component
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update icons in Pharos:
-
   - Remove `add-link`, `checkmark-large`, `close-inverse`, `external-link`, `external-link-arrow`, `gallery`, `list`, `magnifying-glass`, `new-folder`, `x` icons
   - Add `chevron-left-large`, `chevron-right-large`, `edit`, `email`, `facebook`, `fit-to-view`, `folder-new`, `fullscreen-minimize`, `fullscreen`, `instagram`, `link-add`, `link-external`, `linkedin`, `tumblr`, `twitter`, `view-grid`, `youtube`, `zoom-in`, `zoom-out` icons
   - Update existing icons
@@ -1701,18 +1897,15 @@
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add typography stories to Storybook:
-
   - Add typography stories
   - Add styles for lists
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Add component status page to Pharos site:
-
   - Add new icons for statuses
   - Create legend and status `json` files to indicate current status
   - Create component status page
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Add `pharos-link` component:
-
   - Add link component with `primary`, `subtle`, and `on background` states
   - Add `primary-button` and `secondary-button` variants
   - Style links appropriately when in a non-error alert
@@ -1720,7 +1913,6 @@
   - Ensure focus outline is consistent for links that span multiple lines across all browsers
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Use CSS containment for better visual isolation and performance:
-
   - Apply `contain: content` and `contain: strict` where possible for self-contained components
   - Ensure each component's `:host` is styled correctly to best support `contain`
   - Apply `contain: layout` for components whose styles/children go outside its boundary
@@ -1740,14 +1932,12 @@
 ### Major Changes
 
 - Thanks [@daneah](https://github.com/daneah)! - Use tokens created in #267 to style Pharos components, add a few SCSS utilities where needed. Also update the Heading component to reflect the latest decisions from the Brand team on usage, leading to an API change:
-
   - Remove `expressive` and `size` properties
   - Add new `preset` property to indicate to Heading which visual display to use—these can be chosen quickly by designers and specified quickly in code to achieve the desired display.
 
 ### Minor Changes
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Create typography tokens:
-
   - Create body font-family alias token
   - Create body font size alias tokens
   - Create brand line-height tokens
@@ -1756,14 +1946,12 @@
 * Thanks [@likwidsage](https://github.com/likwidsage)! - Add more icons to `pharos-icon` and update iconography & imagery pages
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Deliver fonts from Pharos:
-
   - Generate font-face definitions from tokens
   - Include assets with delivered package
   - Create font-family tokens with fallbacks
   - Pharos site uses fonts from core package
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Deliver typography styles from a separate file:
-
   - Move typography styles from `fonts.css` to `typography.scss` and deliver them as part of the package
   - Set base font size to 100% to allow browser configured font sizing to apply for better accessibility
 
@@ -1779,25 +1967,21 @@
   - Update exclamation and cite icons for new styles
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update heading preset styles:
-
   - Change preset 1 `line-height` value
   - Add `th` styles to `typography.scss`
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update dependencies
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Update dependencies:
-
   - Update PostCSS to v8 and tools that use it as a dependency
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update tooltip and dropdown menu default position to fixed
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Address accessibility issues found by axe-core 4:
-
   - Remove `aria-required` from the checkbox-group fieldset as this is not a valid use of the attribute
   - Add role `radiogroup` to the radio-group fieldset in order to allow use of `aria-required`
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update WTR config:
-
   - Bump up coverage thresholds
   - Move reduced concurrency to the browser that needs it as WTR now allows per browser configuration
 
@@ -1828,18 +2012,15 @@
   - Update spinner tokens to reflect changes in color tokens.
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update color alias tokens:
-
   - Add several new categories of color
   - Remove `primary` token
   - Move some colors out of `brand` into `feedback` category
 
 * Thanks [@Niznikr](https://github.com/Niznikr)! - Provide design tokens in es6 format:
-
   - Rename js object design tokens to `tokens.js`
   - Add es6 design tokens as `variables.js`
 
 - Thanks [@Niznikr](https://github.com/Niznikr)! - Update components to use new brand color tokens:
-
   - Update component colors based off design
   - Remove irrelevant component tokens
   - Update radio and checkbox SVG sizing to match design
@@ -1848,7 +2029,6 @@
 ### Minor Changes
 
 - Thanks [@daneah](https://github.com/daneah)! - Update alert styles for consistency with new brand
-
   - Alert text is now Marble Grey 20 (`pharos-color-text-20`) or White (`pharos-color-text-white`) for error alerts
   - Alert links are now black (`pharos-color-interactive-seondary`) or White (`pharos-color-text-white`) for error alerts
   - Alert links now remove their underline on hover

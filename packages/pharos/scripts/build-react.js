@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import path from 'path';
 import { globbyStream } from 'globby';
-import customElementsManifest from '../custom-elements.json' assert { type: 'json' };
+import customElementsManifest from '../custom-elements.json' with { type: 'json' };
 import prettier from 'prettier';
 
 const REACT_PROP_TYPE = 'DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>';
@@ -55,7 +55,7 @@ const createComponentInterface = (reactName) => {
       });
 
   return props || events
-    ? `interface ${reactName}Props extends ${REACT_PROP_TYPE} {\n` +
+    ? `export interface ${reactName}Props extends ${REACT_PROP_TYPE} {\n` +
         `${(props || []).join('')}` +
         `${(events || []).join('')}` +
         `}`
@@ -96,7 +96,7 @@ const setup = async () => {
 
 export const buildReact = async () => {
   for await (const componentPath of globbyStream(
-    './src/components/**/pharos-!(*.css|*.test|element)*.ts'
+    './src/components/**/pharos-!(*.css|*.test|element|*.stories)*.ts'
   )) {
     const dest = componentPath.replace('/components/', '/react-components/').replace('.ts', '.tsx');
     const webComponentFilePath = componentPath.split('components/')[1].split('.ts')[0];
